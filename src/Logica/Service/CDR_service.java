@@ -1,10 +1,10 @@
-package Logica.CDR;
+package Logica.Service;
 
 import Logica.DTO.CDR;
 
 import java.sql.*;
 
-public class CDR_controler {
+public class CDR_service {
 
 
     public static void Create(Connection c, CDR obj) {

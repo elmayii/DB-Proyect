@@ -1,10 +1,10 @@
-package Logica.Elector;
+package Logica.Service;
 
 import Logica.DTO.Elector;
 
 import java.sql.*;
 
-public class Elector_controler {
+public class Elector_service {
 
     public static void Create(Connection c, Elector obj) {
         try {

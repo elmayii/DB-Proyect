@@ -1,4 +1,4 @@
-package Logica.Circunscripcion;
+package Logica.Service;
 
 import Logica.DTO.Circunscripcion;
 
@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Circunscripcion_controler {
+public class Circunscripcion_service {
     public static void Create(Connection c, Circunscripcion obj) {
         try {
             Statement st = c.createStatement();

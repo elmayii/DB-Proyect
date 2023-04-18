@@ -1,4 +1,4 @@
-package Logica.Municipio;
+package Logica.Service;
 
 import Logica.DTO.Municipio;
 
@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Municipio_controler {
+public class Municipio_service {
     public static void Create(Connection c, Municipio obj) {
         try {
             Statement st = c.createStatement();

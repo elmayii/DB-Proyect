@@ -1,4 +1,4 @@
-package Logica.Colegio;
+package Logica.Service;
 
 import Logica.DTO.Colegio;
 
@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Colegio_controler {
+public class Colegio_service {
     public static void Create(Connection c, Colegio obj) {
         try {
             Statement st = c.createStatement();

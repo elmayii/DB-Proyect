@@ -1,10 +1,10 @@
-package Logica.Nominado;
+package Logica.Service;
 
 import Logica.DTO.Nominado;
 
 import java.sql.*;
 
-public class Nominado_controler {
+public class Nominado_service {
 
     public static void Create(Connection c, Nominado obj) {
         try {
