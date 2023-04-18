@@ -1,4 +1,4 @@
-package Logica.Municipio;
+package Logica.DTO;
 
 public class Municipio {
     private String nombre;

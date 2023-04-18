@@ -1,4 +1,4 @@
-package Logica.Circunscripcion;
+package Logica.DTO;
 
 public class Circunscripcion {
     private String nombre;

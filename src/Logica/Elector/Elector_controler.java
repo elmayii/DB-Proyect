@@ -1,6 +1,6 @@
 package Logica.Elector;
 
-import Logica.Colegio.Colegio;
+import Logica.DTO.Elector;
 
 import java.sql.*;
 

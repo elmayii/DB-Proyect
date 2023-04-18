@@ -1,5 +1,7 @@
 package Logica.Municipio;
 
+import Logica.DTO.Municipio;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

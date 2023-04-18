@@ -1,4 +1,4 @@
-package Logica.Elector;
+package Logica.DTO;
 
 import java.sql.Date;
 

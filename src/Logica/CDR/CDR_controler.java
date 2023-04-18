@@ -1,6 +1,6 @@
 package Logica.CDR;
 
-import Logica.Colegio.Colegio;
+import Logica.DTO.CDR;
 
 import java.sql.*;
 

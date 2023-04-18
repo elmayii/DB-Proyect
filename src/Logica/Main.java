@@ -1,19 +1,6 @@
 package Logica;
 
-import Logica.CDR.CDR;
 import Logica.CDR.CDR_controler;
-import Logica.Circunscripcion.Circunscripcion;
-import Logica.Circunscripcion.Circunscripcion_controler;
-import Logica.Colegio.Colegio;
-import Logica.Colegio.Colegio_controler;
-import Logica.Elector.Elector;
-import Logica.Elector.Elector_controler;
-import Logica.Municipio.Municipio;
-import Logica.Municipio.Municipio_controler;
-import Logica.Nominado.Nominado;
-import Logica.Nominado.Nominado_controler;
-
-import java.sql.Date;
 
 public class Main {
 

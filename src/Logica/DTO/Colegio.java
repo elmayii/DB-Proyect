@@ -1,4 +1,4 @@
-package Logica.Colegio;
+package Logica.DTO;
 
 public class Colegio {
     private String nombre;

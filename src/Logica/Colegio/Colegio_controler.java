@@ -1,6 +1,6 @@
 package Logica.Colegio;
 
-import Logica.Circunscripcion.Circunscripcion;
+import Logica.DTO.Colegio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

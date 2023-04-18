@@ -1,6 +1,6 @@
 package Logica.Nominado;
 
-import Logica.Elector.Elector;
+import Logica.DTO.Nominado;
 
 import java.sql.*;
 

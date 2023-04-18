@@ -1,4 +1,4 @@
-package Logica.CDR;
+package Logica.DTO;
 
 public class CDR {
     private String nombre;

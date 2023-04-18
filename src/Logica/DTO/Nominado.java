@@ -1,6 +1,6 @@
-package Logica.Nominado;
+package Logica.DTO;
 
-import Logica.Elector.Elector;
+import Logica.DTO.Elector;
 
 import java.sql.Date;
 
