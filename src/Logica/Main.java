@@ -1,13 +1,14 @@
 package Logica;
 
+import Logica.Config.Conection;
+import Logica.DTO.CDR;
 import Logica.Service.CDR_service;
 
 public class Main {
 
     public static void main(String [] args){
-        Conection obj=new Conection();
-        obj.doConcect();
-        CDR_service.ReadOne(obj.conection,1);
+        CDR_service.Create("asdas","asdadsa",1);
+        CDR_service.ReadOne(3);
         //CDR_controler.Update(obj.conection,new CDR("sss","cicicici", 1),1);
         //Nominado s= new Nominado("asdfxz","adzzz", new Date(100,2,16), "aweruiwiwuidu ufhuewu eu9wfhe", 20, "adac","asdz","sdaz","asdxx","afaf dfs dwf ",2,2666,1);
         //Nominado_controler.Create(obj.conection, s);

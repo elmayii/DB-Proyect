@@ -1,35 +1,37 @@
 package Logica.Service;
 
+import Logica.Config.Conection;
 import Logica.DTO.CDR;
 
 import java.sql.*;
+import java.util.LinkedList;
 
 public class CDR_service {
 
 
-    public static void Create(Connection c, CDR obj) {
+    public static void Create(String nombre,String nombre_presidente,int colegio_id) {
         try {
-            Statement st = c.createStatement();
-            ResultSet e= st.executeQuery("SELECT count(*) FROM cdr");
-            e.next();
-            PreparedStatement ST= c.prepareStatement("INSERT INTO cdr (id,nombre,nombre_presidente,colegio_id) VALUES(?,?,?,?)");
-            ST.setInt(1,e.getInt(1)+1);
-            ST.setString(2,obj.getNombre());
-            ST.setString(3,obj.getNombre_presidente());
-            ST.setInt(4,obj.getColegio_id());
+            Conection c= new Conection();
+            int limit=ReadAll().size();
+            CallableStatement ST= c.getConection().prepareCall("{call create_cdr(?,?,?,?)}");
+            ST.setInt(1,limit+1);
+            ST.setString(2, nombre);
+            ST.setString(3,nombre_presidente);
+            ST.setInt(4,colegio_id);
             ResultSet RS = ST.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public static void Update(Connection c, CDR obj, int Id){
+    public static void Update(String nombre,String nombre_presidente,int colegio_id, int id){
         try{
-            PreparedStatement ST= c.prepareStatement("UPDATE cdr SET nombre=?, nombre_presidente=?, colegio_id=? WHERE id=?");
-            ST.setString(1, obj.getNombre());
-            ST.setString(2, obj.getNombre_presidente());
-            ST.setInt(3,obj.getColegio_id());
-            ST.setInt(4,Id);
+            Conection c= new Conection();
+            CallableStatement ST= c.getConection().prepareCall("{call update_cdr(?,?,?,?)}");
+            ST.setInt(1, id);
+            ST.setString(2,nombre);
+            ST.setString(3,nombre_presidente);
+            ST.setInt(4,colegio_id);
             ResultSet rs= ST.executeQuery();
         }
         catch (Exception e){
@@ -37,10 +39,11 @@ public class CDR_service {
         }
     }
 
-    public static void Delete(Connection c, int Id){
+    public static void Delete(int id){
         try {
-            PreparedStatement ST= c.prepareStatement("DELETE FROM cdr WHERE id=?");
-            ST.setInt(1,Id);
+            Conection c= new Conection();
+            CallableStatement ST= c.getConection().prepareCall("{call delete_cdr(?)}");
+            ST.setInt(1,id);
             ResultSet rs=ST.executeQuery();
         }
         catch (Exception e){
@@ -48,15 +51,16 @@ public class CDR_service {
         }
     }
 
-    public static ResultSet ReadOne(Connection c, int Id){
+    public static CDR ReadOne(int id){
         try{
-            CallableStatement CST= c.prepareCall("{call getcdr_id(?)}");
-            CST.setInt(1,Id);
+            Conection c= new Conection();
+            CallableStatement CST= c.getConection().prepareCall("{call getbyid_cdr(?)}");
+            CST.setInt(1,id);
             ResultSet set= CST.executeQuery();
             set.next();
             System.out.println(set.getInt(1));
             System.out.println(set.getString(2));
-            return set;
+            return new CDR(set.getInt(1),set.getString(2),set.getString(3),set.getInt(4));
         }
         catch (Exception e){
             System.out.println(e);
@@ -74,12 +78,19 @@ public class CDR_service {
         return null;
     }
 
-    public static ResultSet ReadAll(Connection c){
+    public static LinkedList<CDR> ReadAll(){
         try{
-            PreparedStatement ST= c.prepareStatement("SELECT * FROM cdr");
+            LinkedList<CDR> CDR_list= new LinkedList<CDR>();
+            Conection c= new Conection();
+            Statement st = c.getConection().createStatement();
+            PreparedStatement ST= c.getConection().prepareStatement("SELECT * FROM cdr");
             ResultSet set= ST.executeQuery();
+            while (set.next()){
+                CDR cdr=new CDR(set.getInt(1),set.getString(2),set.getString(3),set.getInt(4));
+                CDR_list.add(cdr);
+            }
             System.out.println(set);
-            return set;
+            return CDR_list;
         }
         catch (Exception e){
             System.out.println(e);

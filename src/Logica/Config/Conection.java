@@ -1,9 +1,9 @@
-package Logica;
+package Logica.Config;
 
 import java.sql.*;
 
 public class Conection {
-    Connection conection=null;
+    private Connection conection=null;
 
     String usuario="postgres";
     String contraseña="firYaDaUQch2";
@@ -13,16 +13,18 @@ public class Conection {
 
     String url = "jdbc:postgresql://"+ip+":"+port+"/"+bd;
 
-    public void doConcect(){
+    public Conection(){
         try {
             Class.forName("org.postgresql.Driver");
             conection= DriverManager.getConnection(url,usuario,contraseña);
-            System.out.println("OKKKKKK");
         }
         catch (Exception e){
             System.out.println(e);
         }
     }
 
+    public Connection getConection(){
+        return this.conection;
+    }
 
 }

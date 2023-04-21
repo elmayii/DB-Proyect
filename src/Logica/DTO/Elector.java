@@ -8,20 +8,31 @@ public class Elector {
     protected Date fecha_nacimiento;
     protected String direccion;
     private int cdr_id;
+    private int id;
 
-    public Elector(String nombre, String apellido, Date fecha_nacimiento, String direccion, int cdr_id) {
+    public Elector(int id,String nombre, String apellido, Date fecha_nacimiento, String direccion, int cdr_id) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_nacimiento = fecha_nacimiento;
         this.direccion = direccion;
         this.cdr_id = cdr_id;
+        this.id=id;
     }
 
-    public Elector(String nombre, String apellido, Date fecha_nacimiento, String direccion){
+    public Elector(int id,String nombre, String apellido, Date fecha_nacimiento, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_nacimiento = fecha_nacimiento;
         this.direccion = direccion;
+        this.id=id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
