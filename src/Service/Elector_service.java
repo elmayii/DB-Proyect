@@ -12,16 +12,17 @@ public class Elector_service {
         try {
             int limit=1;
             Conection c= new Conection();
-            if(ReadAll()!=null){
+            if(!ReadAll().isEmpty()){
                 limit=ReadAll().getLast().getId()+1;
             }
-            CallableStatement ST= c.getConection().prepareCall("{call create_elector(?,?,?,?,?,?)}");
+            CallableStatement ST= c.getConection().prepareCall("{call create_elector(?,?,?,?,?,?,?)}");
             ST.setInt(1,limit);
             ST.setString(2, nombre);
             ST.setString(3, apellidos);
             ST.setDate(4,fecha_nacimiento);
             ST.setString(5,direccion_particular);
             ST.setInt(6,cdr_id);
+            ST.setInt(7,1);
             ResultSet RS = ST.executeQuery();
         } catch (Exception e) {
             System.out.println(e);
@@ -66,7 +67,7 @@ public class Elector_service {
             set.next();
             System.out.println(set.getInt(1));
             System.out.println(set.getString(2));
-            return new Elector(set.getInt(1),set.getString(2),set.getString(3),set.getDate(4),set.getString(5),set.getInt(6),set.getInt(7));
+            return new Elector(set.getInt(1),set.getString(2),set.getString(3),set.getDate(4),set.getString(5),set.getInt(6),set.getInt(7),set.getString(8));
         }
         catch (Exception e){
             System.out.println(e);
@@ -81,7 +82,7 @@ public class Elector_service {
             PreparedStatement ST= c.getConection().prepareStatement("SELECT * FROM elector");
             ResultSet set= ST.executeQuery();
             while (set.next()){
-                Elector elector=new Elector(set.getInt(1),set.getString(2),set.getString(3),set.getDate(4),set.getString(5),set.getInt(6),set.getInt(7));
+                Elector elector=new Elector(set.getInt(1),set.getString(2),set.getString(3),set.getDate(4),set.getString(5),set.getInt(6),set.getInt(7),set.getString(8));
                 Elector_list.add(elector);
             }
             System.out.println(set);
@@ -89,8 +90,8 @@ public class Elector_service {
         }
         catch (Exception e){
             System.out.println(e);
+            return null;
         }
-        return null;
     }
 
 }

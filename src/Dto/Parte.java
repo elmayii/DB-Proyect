@@ -1,18 +1,19 @@
 package Dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Parte {
 
     private int id;
-    private Date fecha_hora;
+    private Timestamp fecha_hora;
     private int votos_total;
     private int electores_eliminados;
     private int electores_agregados;
     private int electores_actual;
     private int colegio_id;
 
-    public Parte(int id, Date fecha_hora, int votos_total, int electores_eliminados, int electores_agregados, int electores_actual, int colegio_id) {
+    public Parte(int id, Timestamp fecha_hora, int votos_total, int electores_eliminados, int electores_agregados, int electores_actual, int colegio_id) {
         this.id = id;
         this.fecha_hora = fecha_hora;
         this.votos_total = votos_total;
@@ -30,11 +31,11 @@ public class Parte {
         this.id = id;
     }
 
-    public Date getFecha_hora() {
+    public Timestamp getFecha_hora() {
         return fecha_hora;
     }
 
-    public void setFecha_hora(Date fecha_hora) {
+    public void setFecha_hora(Timestamp fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
 

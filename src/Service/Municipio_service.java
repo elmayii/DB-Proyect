@@ -11,7 +11,7 @@ public class Municipio_service {
         try {
             int limit=1;
             Conection c= new Conection();
-            if(ReadAll()!=null){
+            if(!ReadAll().isEmpty()){
                 limit=ReadAll().getLast().getId()+1;
             }
             CallableStatement ST= c.getConection().prepareCall("{call create_municipio(?,?)}");
@@ -79,7 +79,7 @@ public class Municipio_service {
         }
         catch (Exception e){
             System.out.println(e);
+            return null;
         }
-        return null;
     }
 }

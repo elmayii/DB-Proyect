@@ -13,8 +13,6 @@ public class Nominado extends Elector {
     private int votos;
     private int circunscripcion;
 
-    private int id;
-
     public Nominado(int id,String nombre, String apellidos,Date fecha_nacimiento, String direccion, int edad, String integracion_revolucionaria, String telefono, String ocupacion, String profesion, String datos_biograficos, int vuelta, int votos, int circunscripcion) {
         super(id,nombre,apellidos,fecha_nacimiento,direccion);
         this.edad=edad;

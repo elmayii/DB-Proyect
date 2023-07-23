@@ -69,8 +69,8 @@ public class Listado_service {
         }
         catch (Exception e){
             System.out.println(e);
+            return null;
         }
-        return null;
     }
 
 }

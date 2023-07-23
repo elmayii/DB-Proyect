@@ -1,33 +1,26 @@
-package UI;
+package UI.CRUD_Municipio;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import Dto.CDR;
-import Dto.Colegio;
 import Dto.Municipio;
-import Service.CDR_service;
-import Service.Circunscripcion_service;
-import Service.Colegio_service;
 import Service.Municipio_service;
+import UI.MainView;
+import javax.swing.JScrollPane;
 
-public class CRUD_Municipio extends JFrame {
+public class ReadMunicipio extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
 
 	/**
@@ -37,7 +30,7 @@ public class CRUD_Municipio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CRUD_Municipio frame = new CRUD_Municipio();
+					ReadMunicipio frame = new ReadMunicipio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,45 +42,34 @@ public class CRUD_Municipio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CRUD_Municipio() {
+	public ReadMunicipio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		dispose();
-		setBounds(100, 100, 734, 611);
+		setBounds(100, 100, 432, 472);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Nombre del Municipio");
-		lblNewLabel.setBounds(10, 40, 140, 14);
-		contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setBounds(10, 62, 159, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 67, 396, 301);
+		contentPane.add(scrollPane);
 		
 		table = new JTable();
-		table.setBounds(101, 118, 479, 301);
-		contentPane.add(table);
-		table.setModel(new DefaultTableModel(
-				new Object[][][] {
-				},
-				new String[] {
-					"CDR", "Nombre del Presidente","Colegio Asociado"
-				}
-			));
+		scrollPane.setViewportView(table);
+		DefaultTableModel model= new DefaultTableModel();
+		model.addColumn("Municipio");
+		table.setModel(model);
 		loadToTable(table);
 		
 		JLabel lblNewLabel_2 = new JLabel("Municipios en el sistema");
-		lblNewLabel_2.setBounds(101, 93, 201, 14);
+		lblNewLabel_2.setBounds(10, 42, 201, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Insertar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
+				/*try{
 					if(!textField.getText().equals("")){
 						Municipio_service.Create(textField.getText());
 						System.out.println("pincho");
@@ -96,12 +78,12 @@ public class CRUD_Municipio extends JFrame {
 				}
 				catch (Exception exep){
 					System.out.println(exep);
-				}
+				}*/
 
 			}
 		});
 		btnNewButton.setEnabled(false);
-		btnNewButton.setBounds(45, 503, 89, 23);
+		btnNewButton.setBounds(10, 399, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("");
@@ -119,16 +101,16 @@ public class CRUD_Municipio extends JFrame {
 		JButton btnNewButton_2 = new JButton("Modificar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(!textField.getText().equals("")){
+				/*if(!textField.getText().equals("")){
 					if(table.getSelectedRow()!=-1){
 						Municipio_service.Update(textField.getText(),Municipio_service.ReadAll().get(table.getSelectedRow()).getId());
 						refreshTable(table);
 					}
-				}
+				}*/
 			}
 		});
 		btnNewButton_2.setEnabled(false);
-		btnNewButton_2.setBounds(324, 503, 89, 23);
+		btnNewButton_2.setBounds(171, 399, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Eliminar");
@@ -143,39 +125,9 @@ public class CRUD_Municipio extends JFrame {
 			}
 		});
 		btnNewButton_3.setEnabled(false);
-		btnNewButton_3.setBounds(591, 503, 89, 23);
+		btnNewButton_3.setBounds(317, 399, 89, 23);
 		contentPane.add(btnNewButton_3);
 		
-		JLabel lblNewLabel_3 = new JLabel("Que desea hacer?");
-		lblNewLabel_3.setBounds(553, 40, 102, 14);
-		contentPane.add(lblNewLabel_3);
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(comboBox.getSelectedItem()=="Insertar") {
-					textField.setEnabled(true);
-					btnNewButton.setEnabled(true);
-					btnNewButton_2.setEnabled(false);
-					btnNewButton_3.setEnabled(false);
-				} else if (comboBox.getSelectedItem()=="Modificar") {
-					textField.setEnabled(true);
-					btnNewButton_2.setEnabled(true);
-					btnNewButton.setEnabled(false);
-					btnNewButton_3.setEnabled(false);
-				} else if (comboBox.getSelectedItem()=="Eliminar") {
-					btnNewButton_3.setEnabled(true);
-					textField.setEnabled(false);
-					btnNewButton_2.setEnabled(false);
-					btnNewButton.setEnabled(false);
-				}
-			}
-		});
-		comboBox.setBounds(553, 61, 89, 22);
-		contentPane.add(comboBox);
-		comboBox.addItem("Insertar");
-		comboBox.addItem("Modificar");
-		comboBox.addItem("Eliminar");
 	}
 	
 	public static void loadToTable(JTable table) {		 

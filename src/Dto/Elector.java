@@ -11,7 +11,9 @@ public class Elector {
     private int id;
     private int flag;
 
-    public Elector(int id, String nombre, String apellido, Date fecha_nacimiento, String direccion, int cdr_id, int flag) {
+    private String carnet;
+
+    public Elector(int id, String nombre, String apellido, Date fecha_nacimiento, String direccion, int cdr_id, int flag,String carnet) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fecha_nacimiento = fecha_nacimiento;
@@ -19,6 +21,7 @@ public class Elector {
         this.cdr_id = cdr_id;
         this.id=id;
         this.flag=flag;
+        this.carnet=carnet;
     }
 
     public Elector(int id,String nombre, String apellido, Date fecha_nacimiento, String direccion) {
@@ -83,5 +86,13 @@ public class Elector {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public String getCarnet() {
+        return carnet;
+    }
+
+    public void setCarnet(String carnet) {
+        this.carnet = carnet;
     }
 }

@@ -1,19 +1,20 @@
 package UI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
+import UI.CRUD_CDR.ReadCDR;
+import UI.CRUD_Circunscripcion.ReadCircunscripcion;
+import UI.CRUD_Colegio.ReadColegio;
+import UI.CRUD_Municipio.ReadMunicipio;
+import UI.CRUD_Nominado.ReadNominado;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JRadioButtonMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class MainView extends JFrame {
 
@@ -51,7 +52,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("CDR");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_CDR frame = new CRUD_CDR();
+				ReadCDR frame = new ReadCDR();
 				frame.setVisible(true);
 				dispose();
 			}
@@ -61,7 +62,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Municipios");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_Municipio frame = new CRUD_Municipio();
+				ReadMunicipio frame = new ReadMunicipio();
 				frame.setVisible(true);
 				dispose();
 			}
@@ -71,7 +72,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Circunscripciones");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_Circunscripcion frame = new CRUD_Circunscripcion();
+				ReadCircunscripcion frame = new ReadCircunscripcion();
 				frame.setVisible(true);
 				dispose();
 			}
@@ -81,7 +82,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Electores");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_Elector frame = new CRUD_Elector();
+				ReadColegio frame = new ReadColegio();
 				frame.setVisible(true);
 				dispose();
 			}
@@ -91,7 +92,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Nominados");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_Nominado frame = new CRUD_Nominado();
+				ReadNominado frame = new ReadNominado();
 				frame.setVisible(true);
 				dispose();
 			}
@@ -101,7 +102,7 @@ public class MainView extends JFrame {
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Colegios");
 		mntmNewMenuItem_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CRUD_Colegio frame = new CRUD_Colegio();
+				ReadColegio frame = new ReadColegio();
 				frame.setVisible(true);
 				dispose();
 			}
